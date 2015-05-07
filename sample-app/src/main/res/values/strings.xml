@@ -1,0 +1,9 @@
+<resources>
+	<string name="app_name">RememberSample</string>
+
+	<plurals name="youve_resumed">
+		<item quantity="one">You’ve resumed this app %s time</item>
+		<item quantity="other">You’ve resumed this app %s times</item>
+	</plurals>
+	<string name="action_settings">Settings</string>
+</resources>
