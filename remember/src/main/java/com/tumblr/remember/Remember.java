@@ -74,7 +74,7 @@ public class Remember {
 		long start = SystemClock.uptimeMillis();
 
 		// Set vars
-		mAppContext = context;
+		mAppContext = context.getApplicationContext();
 		mSharedPrefsName = sharedPrefsName;
 
 		// Read from shared prefs
