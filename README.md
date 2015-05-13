@@ -2,12 +2,9 @@
 
 An in-memory data store backed by shared preferences, for Android.
 
+This is a key-value store with some nice properties:
 
-## What this is
-
-A key-value store with some nice properties:
-
-1. Speed. Everything is stored in-memory so reads can happen on the UI thread. Writes and deletes happen asynchronously (with callbacks). Every public method is safe to call from the UI thread.
+1. Speed. Everything is loaded into memory so reads can happen on the UI thread. Writes and deletes happen asynchronously (with callbacks). Every public method is safe to call from the UI thread.
 
 2. Durability. Writes get persisted to disk, so that this store maintains state even if the app closes or is killed.
 
@@ -31,10 +28,16 @@ dependencies {
 When your app starts up, initialize Remember. This only has to be done once, and should happen in your app's `onCreate()`:
 
 ```java
-Remember.init(getContext(), "com.mysampleapp.whatever");
+@Override
+public void onCreate() {
+    super.onCreate();
+    Remember.init(getApplicationContext(), "com.mysampleapp.whatever");
+}
 ```
 
-Then call it 
+(Note that this is the Application-level [`onCreate()`](http://developer.android.com/reference/android/app/Application.html#onCreate()), **NOT** the Activity `onCreate()`. Check out the [sample app](https://github.com/tumblr/Remember/blob/master/sample-app/src/main/java/com/tumblr/remembersample/SampleApp.java) for an example.)
+
+Now you can freely use Remember from anywhere in your app:
 
 ```java
 Remember.putString("some key", "some value");
