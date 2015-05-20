@@ -6,9 +6,8 @@ import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import com.google.common.base.Function;
-import com.google.common.collect.Maps;
 
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
@@ -79,7 +78,7 @@ public class Remember {
 
 		// Read from shared prefs
 		SharedPreferences prefs = getSharedPreferences();
-		mData = Maps.newConcurrentMap();
+		mData = new ConcurrentHashMap<String,Object>();
 		mData.putAll(prefs.getAll());
 		mWasInitialized = true;
 
@@ -180,7 +179,7 @@ public class Remember {
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 * @return this instance
 	 */
-	private <T> Remember saveAsync(final String key, final T value, final Function<Boolean,Void> callback) {
+	private <T> Remember saveAsync(final String key, final T value, final Callback callback) {
 		// Put it in memory
 		mData.put(key, value);
 
@@ -217,7 +216,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static void clear(final Function<Boolean,Void> callback) {
+	public static void clear(final Callback callback) {
 		getInstance().mData.clear();
 		new AsyncTask<Void,Void,Boolean>() {
 			@Override
@@ -252,7 +251,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static void remove(final String key, final Function<Boolean,Void> callback) {
+	public static void remove(final String key, final Callback callback) {
 		getInstance().mData.remove(key);
 		new AsyncTask<Void,Void,Boolean>() {
 			@Override
@@ -315,7 +314,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static Remember putFloat(final String key, final float value, final Function<Boolean,Void> callback) {
+	public static Remember putFloat(final String key, final float value, final Callback callback) {
 		return getInstance().saveAsync(key, value, callback);
 	}
 
@@ -326,7 +325,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static Remember putInt(String key, int value, final Function<Boolean,Void> callback) {
+	public static Remember putInt(String key, int value, final Callback callback) {
 		return getInstance().saveAsync(key, value, callback);
 	}
 
@@ -337,7 +336,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static Remember putLong(String key, long value, final Function<Boolean,Void> callback) {
+	public static Remember putLong(String key, long value, final Callback callback) {
 		return getInstance().saveAsync(key, value, callback);
 	}
 
@@ -348,7 +347,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static Remember putString(String key, String value, final Function<Boolean,Void> callback) {
+	public static Remember putString(String key, String value, final Callback callback) {
 		return getInstance().saveAsync(key, value, callback);
 	}
 
@@ -359,7 +358,7 @@ public class Remember {
 	 * 		the callback to fire when done. The callback will be fired on the UI thread,
 	 * 		and will be passed 'true' if successful, 'false' if not.
 	 */
-	public static Remember putBoolean(String key, boolean value, final Function<Boolean,Void> callback) {
+	public static Remember putBoolean(String key, boolean value, final Callback callback) {
 		return getInstance().saveAsync(key, value, callback);
 	}
 
@@ -427,4 +426,19 @@ public class Remember {
 		}
 		return castedObject;
 	}
+
+	/**
+	 * The callback interface for async operations.
+	 */
+	public interface Callback {
+
+		/**
+		 * Triggered after the async operation is completed.
+		 *
+		 * @param success true if saved successfully, false otherwise.
+		 */
+		void apply(Boolean success);
+
+	}
+
 }
