@@ -41,7 +41,7 @@ Now you can freely use Remember from anywhere in your app:
 
 ```java
 Remember.putString("some key", "some value");
-String value = Remember.getString("some key");
+String value = Remember.getString("some key", "");
 ```
 
 ## Sample app
