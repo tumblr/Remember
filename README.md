@@ -17,14 +17,6 @@ Note that since writes are asynchronous, an in-flight write may be lost if the a
 
 ## Usage
 
-Pre-requisite: Your project must have [Guava](https://github.com/google/guava) installed. In your app's `build.gradle` file, add it to your dependencies:
-
-```groovy
-dependencies {
-    compile 'com.google.guava:guava:18.0'
-}
-```
-
 When your app starts up, initialize Remember. This only has to be done once, and should happen in your app's `onCreate()`:
 
 ```java
@@ -46,7 +38,7 @@ String value = Remember.getString("some key", "");
 
 ## Javadoc
 
-Right [here](https://cdn.rawgit.com/tumblr/Remember/54cc7b682b801909439a631226ff7f3786039047/doc/index.html)
+Right [here](https://cdn.rawgit.com/tumblr/Remember/ab1870c008e5d96d51ce2655da3f20b59fd82fa5/doc/index.html)
 
 ## Sample app
 Clone and build this repo in Android Studio to see an example of a sample app. The app simply increments a counter stored in Remember and tells you the value.
