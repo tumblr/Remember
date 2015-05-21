@@ -13,19 +13,19 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * An in-memory data store backed by shared preferences. This is a key-value store with a few important properties:
- *
+ * <br><br>
  * 1) Speed. Everything is stored in-memory so reads can happen on the UI thread. Writes and deletes happen
  *    asynchronously (with callbacks). Every public method is safe to call from the UI thread.
- *
+ * <br><br>
  * 2) Durability. Writes get persisted to disk, so that this store maintains state even if the app closes or is killed.
- *
+ * <br><br>
  * 3) Consistency. Doing a write followed by a read should return the value you just put.
- *
+ * <br><br>
  * 4) Thread-safety. Reads and writes can happen from anywhere without the need for external synchronization.
- *
+ * <br><br>
  * Note that since writes are asynchronous, an in-flight write may be lost if the app is killed before the data has
  * been written to disk. If you require true 'commit' semantics then Remember is not for you.
- *
+ * <br><br>
  * Created by mlapadula on 12/23/14.
  */
 public class Remember {
@@ -409,6 +409,8 @@ public class Remember {
 	}
 
 	/**
+	 * Determines if we have a mapping for the given key.
+	 * 
 	 * @return true if we have a mapping for the given key
 	 */
 	public static boolean containsKey(String key) {
