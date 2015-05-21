@@ -46,7 +46,7 @@ String value = Remember.getString("some key", "");
 
 ## Javadoc
 
-Right [here](https://cdn.rawgit.com/tumblr/Remember/master/doc/com/tumblr/remember/Remember.html)
+Right [here](https://cdn.rawgit.com/tumblr/Remember/54cc7b682b801909439a631226ff7f3786039047/doc/index.html)
 
 ## Sample app
 Clone and build this repo in Android Studio to see an example of a sample app. The app simply increments a counter stored in Remember and tells you the value.
