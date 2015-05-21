@@ -44,6 +44,10 @@ Remember.putString("some key", "some value");
 String value = Remember.getString("some key", "");
 ```
 
+## Javadoc
+
+Right [here](https://cdn.rawgit.com/tumblr/Remember/master/doc/com/tumblr/remember/Remember.html)
+
 ## Sample app
 Clone and build this repo in Android Studio to see an example of a sample app. The app simply increments a counter stored in Remember and tells you the value.
 
