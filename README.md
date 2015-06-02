@@ -14,6 +14,25 @@ This is a key-value store with some nice properties:
 
 Note that since writes are asynchronous, an in-flight write may be lost if the app is killed before the data has been written to disk. If you require true 'commit' semantics then Remember is not for you.
 
+## Download
+
+Grab the artifact via [Jitpack](https://jitpack.io/). Include Jitpack as a repository in your build.gradle file:
+
+```
+repositories {
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+```
+
+And add Remember to your dependencies:
+
+```
+dependencies {
+    compile 'com.github.tumblr:Remember:v1.0'
+}
+```
 
 ## Usage
 
