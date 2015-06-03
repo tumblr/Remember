@@ -18,7 +18,7 @@ Note that since writes are asynchronous, an in-flight write may be lost if the a
 
 Grab the artifact via [Jitpack](https://jitpack.io/). Include Jitpack as a repository in your build.gradle file:
 
-```
+```groovy
 repositories {
     maven {
         url 'https://jitpack.io'
@@ -28,7 +28,7 @@ repositories {
 
 And add Remember to your dependencies:
 
-```
+```groovy
 dependencies {
     compile 'com.github.tumblr:Remember:v1.0'
 }
