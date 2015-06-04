@@ -16,13 +16,11 @@ Note that since writes are asynchronous, an in-flight write may be lost if the a
 
 ## Download
 
-Grab the artifact via [Jitpack](https://jitpack.io/). Include Jitpack as a repository in your build.gradle file:
+Grab the artifact via JCenter. Include JCenter as a repository in your build.gradle file:
 
 ```groovy
 repositories {
-    maven {
-        url 'https://jitpack.io'
-    }
+    jcenter()
 }
 ```
 
@@ -30,7 +28,7 @@ And add Remember to your dependencies:
 
 ```groovy
 dependencies {
-    compile 'com.github.tumblr:Remember:v1.0'
+    compile (group: 'com.tumblr', name: 'remember', version: '1.0.0', ext: 'aar')
 }
 ```
 
@@ -64,7 +62,7 @@ Clone and build this repo in Android Studio to see an example of a sample app. T
 
 ## Contact
 
-Michael Lapadula: mlapadula@tumblr.com
+Michael Lapadula: mlapadula@gmail.com
 
 ## License
 
